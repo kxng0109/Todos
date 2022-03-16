@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/*
+.darktheme{
+	@apply  bg-gray-900;
+}
+
+.lighttheme{
+	@apply  bg-white;
+}*/
+
+header>svg{
+	 width:  min(calc(4rem + 10vw), 10rem);
+}
