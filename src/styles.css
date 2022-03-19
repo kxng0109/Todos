@@ -10,6 +10,12 @@
 	@apply  bg-white;
 }*/
 
+/*@layer base {
+	html{
+		font-family: 'Fredoka', sans-serif;
+	}
+}*/
+
 header>svg{
 	 width:  min(calc(4rem + 10vw), 10rem);
 }
