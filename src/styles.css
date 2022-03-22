@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 *{
-	transition: all 0.3s;
+	transition: all 0.3s ease;
 }
 
 header>svg{
 	 width:  min(calc(4rem + 10vw), 10rem);
 }
-/*
+
 .done-todos:first-child{
 	animation: flyOut 1s ease-in forwards;
 }
@@ -22,4 +22,8 @@ header>svg{
 	100%{
 		left: 100%;
 	}
-}*/
+}
+
+main{
+	height: calc(100vh - 72px);
+}
