@@ -9,3 +9,17 @@
 header>svg{
 	 width:  min(calc(4rem + 10vw), 10rem);
 }
+/*
+.done-todos:first-child{
+	animation: flyOut 1s ease-in forwards;
+}
+
+@keyframes flyOut {
+	0%{
+		left: 0;
+	}
+
+	100%{
+		left: 100%;
+	}
+}*/

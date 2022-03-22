@@ -29,25 +29,46 @@
 		</div>
 	</header>
 
-	<main class="px-4 absolute left-0 top-52 w-full dark:text-white">
-		<p class="absolute top-1/2 left-1/2">You're all caught up!</p>
-		<div id="pending">
-			<h3 class="text-xl pb-6 pl-4" id="pending-text">Not completed</h3>
-			<section id="todos-div">
-				<!-- <div class="w-full bg-very-light-green flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-dark-lighter-blueish">
-					<input type="checkbox" name="">
-					<p id="todos-text" class="px-5 truncate w-4/5 text-xl cursor-pointer">Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Illo, eos?</p>
-					<div class="flex items-center w-16 justify-between">
-						<ion-icon name="pencil-outline" class="text-2xl cursor-pointer"></ion-icon>
-						<ion-icon name="trash-outline" class="text-2xl cursor-pointer"></ion-icon>
+	<main>
+		<!-- <p class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl dark:text-white w-4/5 text-center leading-10" id="middle-text">Welcome, click the button at the button-right corner to start</p> --><!-- You're all caught up!&#128077; -->
+		<content class="px-4 absolute left-0 top-52 w-full dark:text-white">
+			<div id="pending">
+				<h3 class="text-xl pb-6 pl-4" id="pending-text">Not completed</h3>
+				<section id="undone-todos-div" class="todos-div">
+					<div class=" undone-todos w-full bg-very-light-green flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-dark-lighter-blueish mb-10">
+						<input type="checkbox" name="">
+						<p id="todos-text" class="px-5 truncate w-4/5 text-xl cursor-pointer">Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Illo, eos?</p>
+						<div class="flex items-center w-16 justify-between">
+							<ion-icon name="pencil-outline" class="text-2xl cursor-pointer"></ion-icon>
+							<ion-icon name="trash-outline" class="text-2xl cursor-pointer undone-delete"></ion-icon>
+						</div>
 					</div>
-				</div> -->
-			</section>
-		</div>
+				</section>
+			</div>
 
-		<!-- <div id="completed" class="mt-20">
-			<h3 class="text-xl pb-6 pl-4 dark:text-white" id="completed-text">Completed</h3>
-		</div> -->
+			<div id="completed" class="mt-20">
+				<h3 class="text-xl pb-6 pl-4 dark:text-white" id="completed-text">Completed</h3>
+				<section id="done-todos-div" class="todos-div text-gray-100 dark:text-gray-500">
+					<div class="done-todos w-full bg-gray-300 flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-gray-700 relative left-0 mb-10">
+						<input type="checkbox" name="" checked>
+						<p id="todos-text" class="px-5 truncate w-4/5 text-xl cursor-pointer">Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Illo, eos?</p>
+						<div class="flex items-center w-16 justify-between">
+							<ion-icon name="pencil-outline" class="text-2xl cursor-pointer"></ion-icon>
+							<ion-icon name="trash-outline" class="text-2xl cursor-pointer done-delete"></ion-icon>
+						</div>
+					</div>
+
+					<div class="done-todos w-full bg-gray-300 flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-gray-700 relative left-0">
+						<input type="checkbox" name="" checked>
+						<p id="todos-text" class="px-5 truncate w-4/5 text-xl cursor-pointer">Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Illo, eos?</p>
+						<div class="flex items-center w-16 justify-between">
+							<ion-icon name="pencil-outline" class="text-2xl cursor-pointer"></ion-icon>
+							<ion-icon name="trash-outline" class="text-2xl cursor-pointer done-delete"></ion-icon>
+						</div>
+					</div>
+				</section>
+			</div>
+		</content>
 	</main>
 
 	<div id="add" class="absolute bottom-10 right-10 bg-light-green p-6 rounded-2xl shadow flex justify-center items-center cursor-pointer dark:bg-dark-blueish">
