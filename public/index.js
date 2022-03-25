@@ -39,31 +39,32 @@ SLIDER.onclick = () =>{
 	localStorage.setItem('theme', 'dark');
 }
 
-pencilIcon.forEach((element, index) =>{
-	pencilIcon[index].onclick = () =>{
-		editPopup.style.display = 'block';
-		console.log(document.body)
-		main.style.filter = 'brightness(50%)';
-		addBtn.style.filter = 'brightness(50%)';
-		editPopupArea.textContent = todosText[index].textContent;
-		editPopupArea.style.border = 'none';
-		mainContent.style.pointerEvents = 'none';
+let editFunction = aNode =>{
+	editPopup.style.display = 'block';
+	main.style.filter = 'brightness(50%)';
+	addBtn.style.filter = 'brightness(50%)';
+	editPopupArea.textContent = aNode.textContent;
+	editPopupArea.style.border = 'none';
+	mainContent.style.pointerEvents = 'none';
 
-		main.onmousedown = () => {
-			editPopup.style.display = 'none';
-			main.style.filter = 'brightness(100%)';
-			addBtn.style.filter = 'brightness(100%)';
-			mainContent.style.pointerEvents = 'auto';
-		}
-
-		doneEditing.onclick = () =>{
-			if (editPopupArea.textContent == '' || editPopupArea.textContent == ' ' || editPopupArea.textContent == '‎') {return editPopupArea.style.border = '1px solid red'}
-			todosText[index].textContent = editPopupArea.textContent;
-			editPopup.style.display = 'none';
-			main.style.filter = 'brightness(100%)';
-			addBtn.style.filter = 'brightness(100%)';
-		}
+	main.onmousedown = () => {
+		editPopup.style.display = 'none';
+		main.style.filter = 'brightness(100%)';
+		addBtn.style.filter = 'brightness(100%)';
+		mainContent.style.pointerEvents = 'auto';
 	}
+
+	doneEditing.onclick = () =>{
+		if (editPopupArea.textContent == '' || editPopupArea.textContent == ' ' || editPopupArea.textContent == '‎') {return editPopupArea.style.border = '1px solid red'}
+		aNode.textContent = editPopupArea.textContent;
+		editPopup.style.display = 'none';
+		main.style.filter = 'brightness(100%)';
+		addBtn.style.filter = 'brightness(100%)';
+	}
+}
+
+pencilIcon.forEach((element, index) =>{
+	pencilIcon[index].onclick = () => editFunction(todosText[index]);
 });
 
 checkBoxes.forEach((element, index) =>{
@@ -97,10 +98,45 @@ deleteBtn.forEach((element, index) =>{
 	};
 });
 
-
 addBtn.onclick = () =>{
+	let index = undoneTodosDiv.length;
+	let createAnElement = (element, varName, theClassName, parentName) =>{
+		switch (true) {
+			case element !== "":
+				varName = document.createElement(element);
+				varName.classList.add(theClassName);
+				return varName;
+			break;
 
+			case parentName !== undefined:
+				parentName.appendChild(varName);
+			break;
+
+			case theClassName !== "" && element == "":
+				varName.classList.add(theClassName);
+			break;
+		}
+	}
+
+	let outerDiv = createAnElement("div", "outerDiv", "todos");
+	createAnElement("", outerDiv, "undone-todos");
+	let theInput = createAnElement("input", "theInput", "check-box");
+	theInput.setAttribute('type', 'checkbox');
+	let theP = createAnElement("p", "theP", "todos-text");
+	let innerDiv = createAnElement("div", "innerDiv", "lol");
+	let pencil = createAnElement("ion-icon", "pencil", "pencil-icon");
+	pencil.setAttribute('name', 'pencil-outline');
+	let trash = createAnElement("ion-icon", "trash", "delete");
+	trash.setAttribute('name', 'trash-outline');
+	createAnElement("", pencil, "", innerDiv);
+	createAnElement("", trash, "", innerDiv);
+	createAnElement("", theInput, "", outerDiv);
+	createAnElement("", theP, "", outerDiv);
+	createAnElement("", innerDiv, "", outerDiv);
+	undoneTodosDiv.appendChild(outerDiv);
+	editFunction(todosText[index]);
 }
+
 // function checker(){
 
 // }

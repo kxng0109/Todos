@@ -44,6 +44,14 @@ main{
 	@apply flex items-center m-auto justify-between;
 }
 
+.pencil-icon{
+	@apply text-2xl cursor-pointer;
+}
+
+.delete{
+	@apply text-2xl cursor-pointer;
+}
+
 .done-todos .pencil-icon{
 	@apply hidden;
 }
