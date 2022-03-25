@@ -10,20 +10,44 @@ header>svg{
 	 width:  min(calc(4rem + 10vw), 10rem);
 }
 
-.done-todos:first-child{
-	animation: flyOut 1s ease-in forwards;
-}
-
-@keyframes flyOut {
+@keyframes goOut{
 	0%{
-		left: 0;
+		opacity: 1;
 	}
 
 	100%{
-		left: 100%;
+		opacity: 0;
 	}
 }
 
 main{
 	height: calc(100vh - 72px);
+}
+
+.done-todos{
+	@apply w-full bg-gray-300 flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-gray-700 relative left-0 mb-10 line-through;
+}
+
+.undone-todos{
+	@apply w-full bg-very-light-green flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-dark-lighter-blueish mb-10;
+}
+
+.undone-todos>div{
+	@apply flex items-center w-16 justify-between;
+}
+
+.todos-text{
+	@apply px-5 truncate w-4/5 text-xl cursor-pointer;
+}
+
+.done-todos>div{
+	@apply flex items-center m-auto justify-between;
+}
+
+.done-todos .pencil-icon{
+	@apply hidden;
+}
+
+.undone-todos .pencil-icon{
+	@apply block;
 }
