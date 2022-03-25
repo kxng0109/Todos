@@ -1,4 +1,5 @@
 const main = document.querySelector('#main');
+const mainContent = document.querySelector('.maincontent');
 const addBtn = document.querySelector('#add');
 const SLIDER = document.querySelector('#slider');
 const SLIDER_CIRCLE = document.querySelector('#slider-circle');
@@ -45,12 +46,14 @@ pencilIcon.forEach((element, index) =>{
 		main.style.filter = 'brightness(50%)';
 		addBtn.style.filter = 'brightness(50%)';
 		editPopupArea.textContent = todosText[index].textContent;
-		editPopupArea.style.border = 'none'
+		editPopupArea.style.border = 'none';
+		mainContent.style.pointerEvents = 'none';
 
 		main.onmousedown = () => {
 			editPopup.style.display = 'none';
 			main.style.filter = 'brightness(100%)';
 			addBtn.style.filter = 'brightness(100%)';
+			mainContent.style.pointerEvents = 'auto';
 		}
 
 		doneEditing.onclick = () =>{
@@ -94,6 +97,10 @@ deleteBtn.forEach((element, index) =>{
 	};
 });
 
+
+addBtn.onclick = () =>{
+
+}
 // function checker(){
 
 // }
