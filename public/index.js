@@ -28,23 +28,23 @@ let stuffs = () =>{
 	let todosText = document.querySelectorAll('.todos-text');
 	let checkBoxes = document.querySelectorAll('.check-box');
 	let deleteBtn = document.querySelectorAll('.delete');
+	let isitnew;
 
 	window.onload = () => {		
 		if (!localStorage.new) {
-			console.log("i'm new")
 			localStorage.setItem('new', 1);
 			middleText.textContent = `Welcome, click the button at the button-right corner to start`;
 			middleText.style.display = 'block';
+			todosChecker('no');
 		}else{
 			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneBackupJSON'));
 			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneBackupJSON'));
 			stuffs();
-			console.log("i'm not new");
 			todosChecker();
 		}
 	}
 
-	let todosChecker = () =>{
+	let todosChecker = (isitnew) =>{
 		middleText.style.display = 'none';
 		switch (true) {
 			case undoneTodosDiv.children.length === 0 && doneTodosDiv.children.length !== 0:
@@ -58,7 +58,7 @@ let stuffs = () =>{
 			case undoneTodosDiv.children.length === 0 && doneTodosDiv.children.length === 0:
 				completedTasks.style.display = 'none';
 				pendingTasks.style.display = 'none';
-				middleText.textContent = `You're all caught up! 👍🏼`
+				if (isitnew !== 'no') {middleText.textContent = `You're all caught up! 👍🏼`};		
 				middleText.style.display = 'block';
 				main.style.display = 'flex';
 			break;
@@ -94,6 +94,10 @@ let stuffs = () =>{
 			addBtn.style.filter = 'brightness(100%)';
 			mainContent.style.pointerEvents = 'auto';
 			addBtn.style.pointerEvents = 'auto';
+			if (aNode.textContent == '' || aNode.textContent == ' ' || aNode.textContent == '‎') {
+				aNode.parentNode.parentNode.lastChild.remove(); 
+				todosChecker();
+			}
 		}
 
 		doneEditing.onclick = () =>{
@@ -102,6 +106,8 @@ let stuffs = () =>{
 			editPopup.style.display = 'none';
 			main.style.filter = 'brightness(100%)';
 			addBtn.style.filter = 'brightness(100%)';
+			mainContent.style.pointerEvents = 'auto';
+			addBtn.style.pointerEvents = 'auto';
 		}
 	}
 
