@@ -2,18 +2,7 @@
 
 const main = document.querySelector('#main');
 const mainContent = document.querySelector('.maincontent');
-
-if (!localStorage.new) {
-	localStorage.setItem('new', 1);
-	middleText.textContent = `Welcome, click the button at the button-right corner to start`;
-	middleText.style.display = 'block';
-} else{
-	// let previous =  localStorage.getItem('before');
-	// mainContent.innerHTML = JSON.parse(previous);
-	// let previousContentClass =  localStorage.getItem('contentsClass');
-	// let contentClassList = JSON.parse(previousContentClass);
-	// contentClassList.forEach((element, index) => mainContent.classList.add(`${element}`))
-}
+const middleText = document.querySelector('#middle-text');
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 	document.documentElement.classList.add('dark');
@@ -25,9 +14,8 @@ let stuffs = () =>{
 	const addBtn = document.querySelector('#add');
 	const SLIDER = document.querySelector('#slider');
 	const SLIDER_CIRCLE = document.querySelector('#slider-circle');
-	const middleText = document.querySelector('#middle-text');
-	const undoneTodosDiv = document.querySelector('#undone-todos-div');
-	const doneTodosDiv = document.querySelector('#done-todos-div');
+	let undoneTodosDiv = document.querySelector('#undone-todos-div');
+	let doneTodosDiv = document.querySelector('#done-todos-div');
 	const editPopupArea = document.querySelector('#editpopuparea');
 	const doneEditing = document.querySelector('#done-editing-btn');
 	const editPopup = document.querySelector('#editpopup');
@@ -40,6 +28,21 @@ let stuffs = () =>{
 	let todosText = document.querySelectorAll('.todos-text');
 	let checkBoxes = document.querySelectorAll('.check-box');
 	let deleteBtn = document.querySelectorAll('.delete');
+
+	window.onload = () => {		
+		if (!localStorage.new) {
+			console.log("i'm new")
+			localStorage.setItem('new', 1);
+			middleText.textContent = `Welcome, click the button at the button-right corner to start`;
+			middleText.style.display = 'block';
+		}else{
+			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneBackupJSON'));
+			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneBackupJSON'));
+			stuffs();
+			console.log("i'm not new");
+			todosChecker();
+		}
+	}
 
 	let todosChecker = () =>{
 		middleText.style.display = 'none';
@@ -55,8 +58,9 @@ let stuffs = () =>{
 			case undoneTodosDiv.children.length === 0 && doneTodosDiv.children.length === 0:
 				completedTasks.style.display = 'none';
 				pendingTasks.style.display = 'none';
-				middleText.textContent = `You're all caught up!&#128077;`
+				middleText.textContent = `You're all caught up! 👍🏼`
 				middleText.style.display = 'block';
+				main.style.display = 'flex';
 			break;
 			default:
 				completedTasks.style.display = 'block';
@@ -82,12 +86,14 @@ let stuffs = () =>{
 		editPopupArea.textContent = aNode.textContent;
 		editPopupArea.style.border = 'none';
 		mainContent.style.pointerEvents = 'none';
+		addBtn.style.pointerEvents = 'none';
 
 		main.onmousedown = () => {
 			editPopup.style.display = 'none';
 			main.style.filter = 'brightness(100%)';
 			addBtn.style.filter = 'brightness(100%)';
 			mainContent.style.pointerEvents = 'auto';
+			addBtn.style.pointerEvents = 'auto';
 		}
 
 		doneEditing.onclick = () =>{
@@ -114,9 +120,9 @@ let stuffs = () =>{
 				setTimeout(() =>{
 					todos[index].style.animation = 'goOut 0.2s linear reverse forwards';
 					doneTodosDiv.appendChild(todos[index]);
+					setTimeout(() => todosChecker(), 100);
 					setTimeout(() => {
 						todos[index].style.animation = '';
-						setTimeout(() => todosChecker(), 100);
 					} , 200);
 				}, 200);
 			} else {
@@ -126,9 +132,9 @@ let stuffs = () =>{
 				setTimeout(() =>{
 					todos[index].style.animation = 'goOut 0.2s linear reverse forwards';
 					undoneTodosDiv.appendChild(todos[index]);
+					setTimeout(() => todosChecker(), 100);
 					setTimeout(() => {
 						todos[index].style.animation = '';
-						setTimeout(() => todosChecker(), 100);
 					} , 200);
 				}, 200);
 			}
@@ -147,6 +153,7 @@ let stuffs = () =>{
 
 	addBtn.onclick = () =>{
 		let index = undoneTodosDiv.children.length;
+		main.style.display = 'block';
 		let createAnElement = (element, varName, theClassName, parentName) =>{
 			switch (true) {
 				case element !== "":
@@ -188,11 +195,10 @@ let stuffs = () =>{
 	}
 
 	setInterval(() =>{
-		let everything = mainContent.innerHTML;
-		let contentClass = mainContent.classList;
-		localStorage.setItem('contentsClass', JSON.stringify(contentClass));		
-		let previousContent = JSON.stringify(everything);
-		localStorage.setItem('before', previousContent);
+		let undoneBackup = undoneTodosDiv.innerHTML;
+		let doneBackup = doneTodosDiv.innerHTML;
+		localStorage.setItem('undoneBackupJSON', JSON.stringify(undoneBackup));		
+		localStorage.setItem('doneBackupJSON', JSON.stringify(doneBackup));
 	}, 1000)
 }
 
