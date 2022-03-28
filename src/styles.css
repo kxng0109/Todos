@@ -97,3 +97,7 @@ ion-icon{
 #done-editing-btn{
 	@apply text-5xl !important;
 }
+
+.todos-list-headers{
+	@apply text-xl pb-6 pl-4 dark:text-white xl:text-2xl 2xl:text-3xl;
+}

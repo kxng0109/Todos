@@ -17,9 +17,9 @@ let stuffs = () =>{
 	const SLIDER_CIRCLE = document.querySelector('#slider-circle');
 	let undoneTodosDiv = document.querySelector('#undone-todos-div');
 	let doneTodosDiv = document.querySelector('#done-todos-div');
-	const editPopupArea = document.querySelector('#editpopuparea');
+	const editTodosPopupArea = document.querySelector('#editpopuparea');
 	const doneEditing = document.querySelector('#done-editing-btn');
-	const editPopup = document.querySelector('#editpopup');
+	const editTodosPopup = document.querySelector('#editpopup');
 	const pendingTasks = document.querySelector('#pending');
 	const completedTasks = document.querySelector('#completed');
 	let todos = document.querySelectorAll('.todos');
@@ -39,8 +39,8 @@ let stuffs = () =>{
 			middleText.style.display = 'block';
 			todosChecker('no');
 		}else{
-			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneBackupJSON'));
-			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneBackupJSON'));
+			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneTodosDivBackupJSON'));
+			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneTodosDivBackupJSON'));
 			stuffs();
 			todosChecker();
 		}
@@ -91,17 +91,17 @@ let stuffs = () =>{
 		localStorage.setItem('theme', 'dark');
 	}
 
-	let editFunction = aNode =>{
-		editPopup.style.display = 'block';
+	let editTodos = aNode =>{
+		editTodosPopup.style.display = 'block';
 		main.style.filter = 'brightness(50%)';
 		addBtn.style.filter = 'brightness(50%)';
-		editPopupArea.textContent = aNode.textContent;
-		editPopupArea.style.border = 'none';
+		editTodosPopupArea.textContent = aNode.textContent;
+		editTodosPopupArea.style.border = 'none';
 		mainContent.style.pointerEvents = 'none';
 		addBtn.style.pointerEvents = 'none';
 
 		main.onmousedown = () => {
-			editPopup.style.display = 'none';
+			editTodosPopup.style.display = 'none';
 			main.style.filter = 'brightness(100%)';
 			addBtn.style.filter = 'brightness(100%)';
 			mainContent.style.pointerEvents = 'auto';
@@ -113,9 +113,9 @@ let stuffs = () =>{
 		}
 
 		doneEditing.onclick = () =>{
-			if (editPopupArea.textContent == '' || editPopupArea.textContent == ' ' || editPopupArea.textContent == '‎') {return editPopupArea.style.border = '1px solid red'}
-			aNode.textContent = editPopupArea.textContent;
-			editPopup.style.display = 'none';
+			if (editTodosPopupArea.textContent == '' || editTodosPopupArea.textContent == ' ' || editTodosPopupArea.textContent == '‎') {return editTodosPopupArea.style.border = '1px solid red'}
+			aNode.textContent = editTodosPopupArea.textContent;
+			editTodosPopup.style.display = 'none';
 			main.style.filter = 'brightness(100%)';
 			addBtn.style.filter = 'brightness(100%)';
 			mainContent.style.pointerEvents = 'auto';
@@ -126,7 +126,7 @@ let stuffs = () =>{
 	pencilIcon.onclick = () => alert('hello')
 
 	pencilIcon.forEach((element, index) =>{
-		pencilIcon[index].onclick = () => editFunction(todosText[index]);
+		pencilIcon[index].onclick = () => editTodos(todosText[index]);
 	});
 
 	checkBoxes.forEach((element, index) =>{
@@ -206,17 +206,17 @@ let stuffs = () =>{
 		createAnElement("", theP, "", outerDiv);
 		createAnElement("", innerDiv, "", outerDiv);
 		undoneTodosDiv.appendChild(outerDiv);
-		let todosText = document.querySelectorAll('.todos-text');
+		let todosText = document.querySelectorAll('.todos-text');//had to re-assign it in order to update the variable, i don't know why i used let
 		stuffs();
 		todosChecker();
-		editFunction(todosText[index]);
+		editTodos(todosText[index]);
 	}
 
 	setInterval(() =>{
-		let undoneBackup = undoneTodosDiv.innerHTML;
-		let doneBackup = doneTodosDiv.innerHTML;
-		localStorage.setItem('undoneBackupJSON', JSON.stringify(undoneBackup));		
-		localStorage.setItem('doneBackupJSON', JSON.stringify(doneBackup));
+		let undoneTodosDivBackup = undoneTodosDiv.innerHTML;
+		let doneTodosDivBackup = doneTodosDiv.innerHTML;
+		localStorage.setItem('undoneTodosDivBackupJSON', JSON.stringify(undoneTodosDivBackup));		
+		localStorage.setItem('doneTodosDivBackupJSON', JSON.stringify(doneTodosDivBackup));
 	}, 1000)
 }
 

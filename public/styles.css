@@ -521,10 +521,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 3;
 }
 
-.z-\[4\] {
-  z-index: 4;
-}
-
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -583,10 +579,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-5\/6 {
   width: 83.333333%;
-}
-
-.w-4\/5 {
-  width: 80%;
 }
 
 .-translate-y-1\/2 {
@@ -693,14 +685,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-32 {
   padding-top: 8rem;
-}
-
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
-
-.pl-4 {
-  padding-left: 1rem;
 }
 
 .text-center {
@@ -1015,6 +999,32 @@ header>svg{
   line-height: 1 !important;
 }
 
+.todos-list-headers {
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.dark .todos-list-headers {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 1280px) {
+  .todos-list-headers {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .todos-list-headers {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
 .dark .dark\:left-0 {
   left: 0px;
 }
@@ -1129,10 +1139,5 @@ header>svg{
   .\32xl\:text-5xl {
     font-size: 3rem;
     line-height: 1;
-  }
-
-  .\32xl\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 }

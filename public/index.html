@@ -7,6 +7,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="icon" type="images/png" href="images/nobg.png" sizes="16x16">
 	<script type="text/javascript" src="index.js" defer></script>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -32,7 +33,7 @@
 		</div>
 	</header>
 
-	<div class="bg-white text-black dark:text-white dark:bg-[#005f73] absolute  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-5/6 h-2/5 rounded z-3 p-6 text-xl hidden" id="editpopup">
+	<div class="bg-white text-black dark:text-white dark:bg-[#005f73] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-5/6 h-2/5 rounded z-3 p-6 text-xl hidden" id="editpopup">
 		<p contenteditable class="w-full h-full overflow-y-auto" id="editpopuparea"></p>
 		<ion-icon name="checkmark-circle" class="dark:text-white text-black text-5xl fixed right-2 bottom-2" id="done-editing-btn"></ion-icon>
 	</div>
@@ -43,14 +44,14 @@
 	<main class="px-4 pt-32 dark:bg-gray-900 bg-white w-full sticky justify-center items-center flex-col sm:px-[7rem]" id="main">
 		<content class="w-full dark:text-white maincontent">
 			<div id="pending">
-				<h3 class="text-xl pb-6 pl-4 xl:text-2xl 2xl:text-3xl" id="pending-text">Not completed</h3>
+				<h3 class="todos-list-headers" id="pending-text">Not completed</h3>
 				<section id="undone-todos-div" class="todos-div">
 				</section>
 			</div>
 
 
 			<div id="completed" class="mt-20">
-				<h3 class="text-xl pb-6 pl-4 dark:text-white xl:text-2xl 2xl:text-3xl" id="completed-text">Completed</h3>
+				<h3 class="todos-list-headers" id="completed-text">Completed</h3>
 				<section id="done-todos-div" class="todos-div text-gray-400 dark:text-gray-400 transition-all grayscale">
 				</section>
 			</div>
