@@ -3,6 +3,7 @@
 const main = document.querySelector('#main');
 const mainContent = document.querySelector('.maincontent');
 const middleText = document.querySelector('#middle-text');
+const middleTextDiv = document.querySelector('.middle-text-div');
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 	document.documentElement.classList.add('dark');
@@ -29,6 +30,7 @@ let stuffs = () =>{
 	let checkBoxes = document.querySelectorAll('.check-box');
 	let deleteBtn = document.querySelectorAll('.delete');
 	let isitnew;
+	const header = document.querySelector('#header');
 
 	window.onload = () => {		
 		if (!localStorage.new) {
@@ -44,8 +46,18 @@ let stuffs = () =>{
 		}
 	}
 
+	document.documentElement.onclick = () => {
+		let mainHeight = window.getComputedStyle(main, null).getPropertyValue("height");
+		let headerHeight = window.getComputedStyle(header, null).getPropertyValue("height");
+		const difference = screen.availHeight - parseInt(`${headerHeight}`);
+		console.log(difference)
+		mainHeight <= `${screen.availHeight}px` ? main.style.height = `${difference}px`
+		: main.style.height = 'auto';
+	}
+
 	let todosChecker = (isitnew) =>{
 		middleText.style.display = 'none';
+		middleTextDiv.style.display = 'none';
 		switch (true) {
 			case undoneTodosDiv.children.length === 0 && doneTodosDiv.children.length !== 0:
 				pendingTasks.style.display = 'none';
@@ -60,7 +72,7 @@ let stuffs = () =>{
 				pendingTasks.style.display = 'none';
 				if (isitnew !== 'no') {middleText.textContent = `You're all caught up! 👍🏼`};		
 				middleText.style.display = 'block';
-				main.style.display = 'flex';
+				middleTextDiv.style.display = 'flex';
 			break;
 			default:
 				completedTasks.style.display = 'block';

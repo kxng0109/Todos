@@ -480,6 +480,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: relative;
 }
 
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -504,14 +509,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: 0.5rem;
 }
 
-.left-0 {
-  left: 0px;
-}
-
-.top-32 {
-  top: 8rem;
-}
-
 .bottom-10 {
   bottom: 2.5rem;
 }
@@ -522,6 +519,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .z-3 {
   z-index: 3;
+}
+
+.z-\[4\] {
+  z-index: 4;
 }
 
 .mr-2 {
@@ -690,6 +691,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1rem;
 }
 
+.pt-32 {
+  padding-top: 8rem;
+}
+
 .pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -764,6 +769,38 @@ header>svg{
   width:  min(calc(4rem + 10vw), 10rem);
 }
 
+@media screen and (min-width:  540px){
+  #main{
+    padding-inline: calc(5rem + 5vw);
+  }
+}
+
+@media screen and (min-width:  640px){
+  #editpopup{
+    width: calc(25rem + 10vw);
+  }
+
+  #editpopup {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media screen and (min-width:  1536px){
+  #main, #header{
+    padding-inline: calc(5rem + 10vw);
+  }
+
+  #editpopup{
+    width: calc(30rem + 10vw);
+  }
+
+  #editpopup {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
 @-webkit-keyframes goOut{
   0%{
     opacity: 1;
@@ -782,10 +819,6 @@ header>svg{
   100%{
     opacity: 0;
   }
-}
-
-main{
-  height: calc(100vh - 72px);
 }
 
 .done-todos {
@@ -812,6 +845,24 @@ main{
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
+@media (min-width: 1024px) {
+  .done-todos {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .done-todos {
+    margin-bottom: 5rem;
+  }
+
+  .done-todos {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
 .undone-todos {
   margin-bottom: 2.5rem;
   display: flex;
@@ -832,11 +883,41 @@ main{
   background-color: rgb(44 102 110 / var(--tw-bg-opacity));
 }
 
+@media (min-width: 1024px) {
+  .undone-todos {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .undone-todos {
+    margin-bottom: 5rem;
+  }
+
+  .undone-todos {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
 .undone-todos>div {
   display: flex;
   width: 4rem;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .undone-todos>div {
+    width: 16.666667%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .undone-todos>div {
+    width: 8.333333%;
+  }
 }
 
 .todos-text {
@@ -849,6 +930,20 @@ main{
   padding-right: 1.25rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .todos-text {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .todos-text {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }
 
 .done-todos>div {
@@ -864,10 +959,24 @@ main{
   line-height: 2rem;
 }
 
+@media (min-width: 1024px) {
+  .pencil-icon {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
 .delete {
   cursor: pointer;
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .delete {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }
 
 .done-todos .pencil-icon {
@@ -876,6 +985,34 @@ main{
 
 .undone-todos .pencil-icon {
   display: block;
+}
+
+.undone-todos:last-child, .undone-todos:last-child{
+  margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  ion-icon {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  ion-icon {
+    font-size: 3rem !important;
+    line-height: 1 !important;
+  }
+}
+
+.check-box{
+  width: calc(1rem + 0.5vw);
+  height: calc(1rem + 0.5vw);
+}
+
+#done-editing-btn {
+  font-size: 3rem !important;
+  line-height: 1 !important;
 }
 
 .dark .dark\:left-0 {
@@ -928,4 +1065,74 @@ main{
 .dark .dark\:text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+@media (min-width: 640px) {
+  .sm\:px-\[7rem\] {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:h-5 {
+    height: 1.25rem;
+  }
+
+  .lg\:w-12 {
+    width: 3rem;
+  }
+
+  .lg\:w-5 {
+    width: 1.25rem;
+  }
+
+  .lg\:rounded-xl {
+    border-radius: 0.75rem;
+  }
+
+  .lg\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:h-24 {
+    height: 6rem;
+  }
+
+  .xl\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:bottom-24 {
+    bottom: 6rem;
+  }
+
+  .\32xl\:right-24 {
+    right: 6rem;
+  }
+
+  .\32xl\:p-9 {
+    padding: 2.25rem;
+  }
+
+  .\32xl\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .\32xl\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }

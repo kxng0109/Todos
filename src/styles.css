@@ -10,6 +10,31 @@ header>svg{
 	 width:  min(calc(4rem + 10vw), 10rem);
 }
 
+
+@media screen and (min-width:  540px){
+	#main{
+		padding-inline: calc(5rem + 5vw);
+	}
+}
+
+@media screen and (min-width:  640px){
+	#editpopup{
+		width: calc(25rem + 10vw);
+		@apply text-2xl;
+	}
+}
+
+@media screen and (min-width:  1536px){
+	#main, #header{
+		padding-inline: calc(5rem + 10vw);
+	}
+
+	#editpopup{
+		width: calc(30rem + 10vw);
+		@apply text-4xl;
+	}
+}
+
 @keyframes goOut{
 	0%{
 		opacity: 1;
@@ -20,24 +45,20 @@ header>svg{
 	}
 }
 
-main{
-	height: calc(100vh - 72px);
-}
-
 .done-todos{
-	@apply w-full bg-gray-300 flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-gray-700 relative left-0 mb-10 line-through;
+	@apply w-full bg-gray-300 flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-gray-700 relative left-0 mb-10 line-through lg:px-10 xl:py-7 xl:mb-20;
 }
 
 .undone-todos{
-	@apply w-full bg-very-light-green flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-dark-lighter-blueish mb-10;
+	@apply w-full bg-very-light-green flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-dark-lighter-blueish mb-10 lg:px-10 xl:py-7 xl:mb-20;
 }
 
 .undone-todos>div{
-	@apply flex items-center w-16 justify-between;
+	@apply flex items-center w-16 justify-between lg:w-2/12 xl:w-1/12;
 }
 
 .todos-text{
-	@apply px-5 truncate w-4/5 text-xl cursor-pointer;
+	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-2xl xl:text-3xl;
 }
 
 .done-todos>div{
@@ -45,11 +66,11 @@ main{
 }
 
 .pencil-icon{
-	@apply text-2xl cursor-pointer;
+	@apply text-2xl cursor-pointer lg:text-3xl;
 }
 
 .delete{
-	@apply text-2xl cursor-pointer;
+	@apply text-2xl cursor-pointer lg:text-3xl;
 }
 
 .done-todos .pencil-icon{
@@ -58,4 +79,21 @@ main{
 
 .undone-todos .pencil-icon{
 	@apply block;
+}
+
+.undone-todos:last-child, .undone-todos:last-child{
+	margin-bottom: 0;
+}
+
+ion-icon{
+	@apply lg:text-3xl 2xl:text-5xl !important;
+}
+
+.check-box{
+	width: calc(1rem + 0.5vw);
+	height: calc(1rem + 0.5vw);
+}
+
+#done-editing-btn{
+	@apply text-5xl !important;
 }
