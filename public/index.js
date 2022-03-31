@@ -35,12 +35,12 @@ let stuffs = () =>{
 	window.onload = () => {		
 		if (!localStorage.new) {
 			localStorage.setItem('new', 1);
-			middleText.textContent = `Welcome, click the button at the button-right corner to start`;
+			middleText.textContent = `Welcome, click the button at the buttom-right corner to start`;
 			middleText.style.display = 'block';
 			todosChecker('no');
 		}else{
-			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneTodosDivBackupJSON'));
-			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneTodosDivBackupJSON'));
+			// undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneTodosDivBackupJSON'));
+			// doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneTodosDivBackupJSON'));
 			stuffs();
 			todosChecker();
 		}
@@ -123,7 +123,18 @@ let stuffs = () =>{
 		}
 	}
 
-	pencilIcon.onclick = () => alert('hello')
+	todosText.forEach((element, index) =>{
+		todosText[index].style.whiteSpace = 'nowrap';
+		todosText[index].style.overflow = 'hidden';
+		todosText[index].onclick = (e) => {
+			todosText[index].style.whiteSpace = 'normal';
+			todosText[index].style.overflowY = 'visible';
+			if (e.target !== todosText[index]) {
+				todosText[index].style.whiteSpace = 'nowrap';
+				todosText[index].style.overflowY = 'hidden';
+			}
+		}
+	})
 
 	pencilIcon.forEach((element, index) =>{
 		pencilIcon[index].onclick = () => editTodos(todosText[index]);

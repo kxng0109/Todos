@@ -6,15 +6,16 @@
 	transition: all 0.3s ease;
 }
 
-header>svg{
-	 width:  min(calc(4rem + 10vw), 10rem);
+.todos-text::-webkit-scrollbar{
+	width: 1px;
 }
 
+.todos-text::-webkit-scrollbar-thumb{
+	background-color: gray;
+}
 
-@media screen and (min-width:  540px){
-	#main{
-		padding-inline: calc(5rem + 5vw);
-	}
+header>svg{
+	 width:  min(calc(4rem + 10vw), 9rem);
 }
 
 @media screen and (min-width:  640px){
@@ -45,24 +46,45 @@ header>svg{
 	}
 }
 
+.todos{
+	@apply w-full flex justify-evenly items-center rounded-md px-5 py-4 mb-10 lg:px-6 lg:justify-center lg:overflow-y-auto lg:h-[300px] lg:relative xl:py-7 xl:mb-20;
+}
+
 .done-todos{
-	@apply w-full bg-gray-300 flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-gray-700 relative left-0 mb-10 line-through lg:px-10 xl:py-7 xl:mb-20;
+	@apply bg-gray-300 dark:bg-gray-700 relative left-0 line-through;
 }
 
 .undone-todos{
-	@apply w-full bg-very-light-green flex justify-evenly items-center rounded-md px-5 py-4 dark:bg-dark-lighter-blueish mb-10 lg:px-10 xl:py-7 xl:mb-20;
+	@apply bg-very-light-green dark:bg-dark-lighter-blueish;
 }
+
+.todos-div{
+	@apply grid lg:grid-cols-2 gap-x-10 lg:justify-center grid-cols-1 xl:grid-cols-3
+}
+
 
 .undone-todos>div{
-	@apply flex items-center w-16 justify-between lg:w-2/12 xl:w-1/12;
-}
-
-.todos-text{
-	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-2xl xl:text-3xl;
+	@apply  lg:absolute lg:z-3 lg:w-5 lg:bottom-5 lg:right-[30%] flex items-center w-16 justify-between lg:w-20;
 }
 
 .done-todos>div{
 	@apply flex items-center m-auto justify-between;
+}
+
+
+.check-box{
+	width: calc(1rem + 0.5vw);
+	height: calc(1rem + 0.5vw);
+	@apply lg:absolute lg:z-3 lg:bottom-[22px] lg:left-[30%] cursor-pointer;
+}
+
+.done-todos .check-box{
+	@apply lg:left-1/2 -translate-x-1/2;
+}
+
+
+.todos-text{
+	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-xl xl:text-xl lg:w-full lg:px-0 lg:break-words lg:text-center lg:h-[200px]
 }
 
 .pencil-icon{
@@ -86,12 +108,7 @@ header>svg{
 }
 
 ion-icon{
-	@apply lg:text-3xl 2xl:text-5xl !important;
-}
-
-.check-box{
-	width: calc(1rem + 0.5vw);
-	height: calc(1rem + 0.5vw);
+	@apply lg:text-2xl cursor-pointer 2xl:text-4xl !important;
 }
 
 #done-editing-btn{

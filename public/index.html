@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="styles.css"> 
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<meta name="theme-color" content="#ABEDC6">
     <meta name="description" content="Website used for taking notes.">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="index.js" defer></script>
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-	<title>Todos</title>
+	<title>Plan It</title>
 </head>
 
 <body class="font-fredoka dark:bg-gray-900 bg-white">
@@ -40,14 +40,55 @@
 		<ion-icon name="checkmark-circle" class="dark:text-white text-black text-5xl fixed right-2 bottom-2" id="done-editing-btn"></ion-icon>
 	</div>
 	
-	<div class="items-center justify-center hidden middle-text-div absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-3"><p class=" text-2xl dark:text-white text-center leading-10 hidden xl:text-2xl 2xl:text-5xl" id="middle-text"></p></div>
+	<div class="items-center justify-center hidden middle-text-div absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-3 w-4/5 lg:w-1/2">
+		<p class=" text-2xl dark:text-white text-center leading-10 hidden xl:text-2xl 2xl:text-5xl" id="middle-text"></p>
+	</div>
 
 
-	<main class="px-4 pt-32 dark:bg-gray-900 bg-white w-full sticky justify-center items-center flex-col sm:px-[7rem]" id="main">
+	<main class="px-4 pt-32 dark:bg-gray-900 bg-white w-full sticky xsm:px-20 sm:px-[7rem]" id="main"><!-- justify-center items-center flex-col  -->
 		<content class="w-full dark:text-white maincontent">
 			<div id="pending">
 				<h3 class="todos-list-headers" id="pending-text">Not completed</h3>
 				<section id="undone-todos-div" class="todos-div">
+					<div class="todos undone-todos"><input class="check-box" type="checkbox">
+						<p class="todos-text">gnmsfh&nbsp; sf sfnmsf s sf&nbsp;</p>
+						<div class="buttons">
+							<ion-icon class="pencil-icon md hydrated" name="pencil-outline" role="img" aria-label="pencil outline"></ion-icon>
+							<ion-icon class="delete md hydrated" name="trash-outline" role="img" aria-label="trash outline"></ion-icon>
+						</div>
+					</div>
+
+					<div class="todos undone-todos"><input class="check-box" type="checkbox">
+						<p class="todos-text">Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Voluptates obcaecati et corporis, omnis ullam sint praesentium necessitatibus itaque autem repellat consequatur reiciendis temporibus accusantium consectetur dignissimos tempora ipsam ab, ducimus.;</p>
+						<div class="buttons">
+							<ion-icon class="pencil-icon md hydrated" name="pencil-outline" role="img" aria-label="pencil outline"></ion-icon>
+							<ion-icon class="delete md hydrated" name="trash-outline" role="img" aria-label="trash outline"></ion-icon>
+						</div>
+					</div>
+
+					<div class="todos undone-todos"><input class="check-box" type="checkbox">
+						<p class="todos-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, quasi!</p>
+						<div class="buttons">
+							<ion-icon class="pencil-icon md hydrated" name="pencil-outline" role="img" aria-label="pencil outline"></ion-icon>
+							<ion-icon class="delete md hydrated" name="trash-outline" role="img" aria-label="trash outline"></ion-icon>
+						</div>
+					</div>
+
+					<div class="todos undone-todos"><input class="check-box" type="checkbox">
+						<p class="todos-text">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Ratione totam architecto esse necessitatibus eius consequuntur dolorum aliquam minima hic commodi expedita quidem molestiae debitis natus sit ea temporibus sunt deserunt repudiandae ipsam sint quasi magni, perspiciatis. Harum delectus quas id.</p>
+						<div class="buttons">
+							<ion-icon class="pencil-icon" name="pencil-outline"></ion-icon>
+							<ion-icon class="delete" name="trash-outline"></ion-icon>
+						</div>
+					</div>
+
+					<div class="todos undone-todos"><input class="check-box" type="checkbox">
+						<p class="todos-text">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<div class="buttons">
+							<ion-icon class="pencil-icon" name="pencil-outline"></ion-icon>
+							<ion-icon class="delete" name="trash-outline"></ion-icon>
+						</div>
+					</div>
 				</section>
 			</div>
 
@@ -55,6 +96,24 @@
 			<div id="completed" class="mt-20">
 				<h3 class="todos-list-headers" id="completed-text">Completed</h3>
 				<section id="done-todos-div" class="todos-div text-gray-400 dark:text-gray-400 transition-all grayscale">
+
+					<div class="todos done-todos">
+						<input type="checkbox" name="Not done" checked class="check-box">
+						<p class="todos-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo fugit consequuntur neque fuga incidunt nihil ipsam saepe. Adipisci, odit exercitationem nesciunt architecto minima esse ratione alias soluta, mollitia labore repellendus quae veniam assumenda praesentium cupiditate numquam rem. Voluptatibus, velit, quae!</p>
+						<div class="buttons">
+							<ion-icon class="pencil-icon" name="pencil-outline"></ion-icon>
+							<ion-icon name="trash-outline" class="delete"></ion-icon>
+						</div>
+					</div>
+
+					<div class="todos done-todos">
+						<input type="checkbox" name="Not done" checked class="check-box">
+						<p class="todos-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, quis.</p>
+						<div class="buttons">
+							<ion-icon class="pencil-icon" name="pencil-outline"></ion-icon>
+							<ion-icon name="trash-outline" class="delete"></ion-icon>
+						</div>
+					</div>
 				</section>
 			</div>
 		</content>

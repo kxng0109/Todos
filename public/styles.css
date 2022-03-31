@@ -468,6 +468,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .fixed {
   position: fixed;
 }
@@ -579,6 +583,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-5\/6 {
   width: 83.333333%;
+}
+
+.w-4\/5 {
+  width: 80%;
 }
 
 .-translate-y-1\/2 {
@@ -730,6 +738,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.outline {
+  outline-style: solid;
+}
+
 .grayscale {
   --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -749,14 +761,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition: all 0.3s ease;
 }
 
-header>svg{
-  width:  min(calc(4rem + 10vw), 10rem);
+.todos-text::-webkit-scrollbar{
+  width: 1px;
 }
 
-@media screen and (min-width:  540px){
-  #main{
-    padding-inline: calc(5rem + 5vw);
-  }
+.todos-text::-webkit-scrollbar-thumb{
+  background-color: gray;
+}
+
+header>svg{
+  width:  min(calc(4rem + 10vw), 9rem);
 }
 
 @media screen and (min-width:  640px){
@@ -805,21 +819,58 @@ header>svg{
   }
 }
 
-.done-todos {
-  position: relative;
-  left: 0px;
+.todos {
   margin-bottom: 2.5rem;
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-evenly;
   border-radius: 0.375rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .todos {
+    position: relative;
+  }
+
+  .todos {
+    height: 300px;
+  }
+
+  .todos {
+    justify-content: center;
+  }
+
+  .todos {
+    overflow-y: auto;
+  }
+
+  .todos {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .todos {
+    margin-bottom: 5rem;
+  }
+
+  .todos {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+.done-todos {
+  position: relative;
+  left: 0px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
   -webkit-text-decoration-line: line-through;
           text-decoration-line: line-through;
 }
@@ -829,37 +880,9 @@ header>svg{
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
-@media (min-width: 1024px) {
-  .done-todos {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .done-todos {
-    margin-bottom: 5rem;
-  }
-
-  .done-todos {
-    padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
-  }
-}
-
 .undone-todos {
-  margin-bottom: 2.5rem;
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-evenly;
-  border-radius: 0.375rem;
   --tw-bg-opacity: 1;
   background-color: rgb(233 235 158 / var(--tw-bg-opacity));
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 .dark .undone-todos {
@@ -867,21 +890,26 @@ header>svg{
   background-color: rgb(44 102 110 / var(--tw-bg-opacity));
 }
 
+.todos-div {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  -moz-column-gap: 2.5rem;
+       column-gap: 2.5rem;
+}
+
 @media (min-width: 1024px) {
-  .undone-todos {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+  .todos-div {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .todos-div {
+    justify-content: center;
   }
 }
 
 @media (min-width: 1280px) {
-  .undone-todos {
-    margin-bottom: 5rem;
-  }
-
-  .undone-todos {
-    padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
+  .todos-div {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -894,13 +922,69 @@ header>svg{
 
 @media (min-width: 1024px) {
   .undone-todos>div {
-    width: 16.666667%;
+    position: absolute;
+  }
+
+  .undone-todos>div {
+    bottom: 1.25rem;
+  }
+
+  .undone-todos>div {
+    right: 30%;
+  }
+
+  .undone-todos>div {
+    z-index: 3;
+  }
+
+  .undone-todos>div {
+    width: 1.25rem;
+  }
+
+  .undone-todos>div {
+    width: 5rem;
   }
 }
 
-@media (min-width: 1280px) {
-  .undone-todos>div {
-    width: 8.333333%;
+.done-todos>div {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.check-box{
+  width: calc(1rem + 0.5vw);
+  height: calc(1rem + 0.5vw);
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .check-box {
+    position: absolute;
+  }
+
+  .check-box {
+    bottom: 22px;
+  }
+
+  .check-box {
+    left: 30%;
+  }
+
+  .check-box {
+    z-index: 3;
+  }
+}
+
+.done-todos .check-box {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@media (min-width: 1024px) {
+  .done-todos .check-box {
+    left: 50%;
   }
 }
 
@@ -918,23 +1002,37 @@ header>svg{
 
 @media (min-width: 1024px) {
   .todos-text {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    height: 200px;
+  }
+
+  .todos-text {
+    width: 100%;
+  }
+
+  .todos-text {
+    overflow-wrap: break-word;
+  }
+
+  .todos-text {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .todos-text {
+    text-align: center;
+  }
+
+  .todos-text {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
 @media (min-width: 1280px) {
   .todos-text {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
-}
-
-.done-todos>div {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .pencil-icon {
@@ -975,23 +1073,22 @@ header>svg{
   margin-bottom: 0;
 }
 
+ion-icon {
+  cursor: pointer !important;
+}
+
 @media (min-width: 1024px) {
   ion-icon {
-    font-size: 1.875rem !important;
-    line-height: 2.25rem !important;
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
   }
 }
 
 @media (min-width: 1536px) {
   ion-icon {
-    font-size: 3rem !important;
-    line-height: 1 !important;
+    font-size: 2.25rem !important;
+    line-height: 2.5rem !important;
   }
-}
-
-.check-box{
-  width: calc(1rem + 0.5vw);
-  height: calc(1rem + 0.5vw);
 }
 
 #done-editing-btn {
@@ -1097,6 +1194,10 @@ header>svg{
     width: 1.25rem;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
   .lg\:rounded-xl {
     border-radius: 0.75rem;
   }
@@ -1139,5 +1240,12 @@ header>svg{
   .\32xl\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 480px) {
+  .xsm\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
