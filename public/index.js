@@ -46,11 +46,10 @@ let stuffs = () =>{
 	}
 
 	const setHeightOfContentArea = () => {
-		let mainHeight = window.getComputedStyle(main, null).getPropertyValue("height");
+		let mainHeight = parseInt(window.getComputedStyle(main, null).getPropertyValue("height"));
 		let headerHeight = window.getComputedStyle(header, null).getPropertyValue("height");
 		const difference = document.documentElement.clientHeight - parseInt(`${headerHeight}`);
-		console.log(difference)
-		mainHeight <= `${document.documentElement.clientHeight}px` ? main.style.height = `${difference}px`
+		mainHeight <= `${document.documentElement.clientHeight}` ? main.style.height = `${difference}px`
 		: main.style.height = 'auto';
 	}
 
@@ -185,10 +184,10 @@ let stuffs = () =>{
 	addBtn.onclick = () =>{
 		let index = undoneTodosDiv.children.length;
 		main.style.display = 'block';
-		let createAnElement = (element, varName, theClassName, parentName) =>{
+		let createAnElement = (htmlElement, varName, theClassName, parentName) =>{
 			switch (true) {
-				case element !== "":
-					varName = document.createElement(element);
+				case htmlElement !== "":
+					varName = document.createElement(htmlElement);
 					varName.classList.add(theClassName);
 					return varName;
 				break;
@@ -197,7 +196,7 @@ let stuffs = () =>{
 					parentName.appendChild(varName);
 				break;
 
-				case theClassName !== "" && element == "":
+				case theClassName !== "" && htmlElement == "":
 					varName.classList.add(theClassName);
 				break;
 			}
