@@ -32,7 +32,13 @@ header>svg{
 
 	#editpopup{
 		width: calc(30rem + 10vw);
-		@apply text-4xl;
+		@apply text-3xl;
+	}
+}
+
+@media screen and (min-width:  2400px){
+	#main, #header{
+		padding-inline: 20vw;
 	}
 }
 
@@ -55,16 +61,16 @@ header>svg{
 }
 
 .undone-todos{
-	@apply bg-very-light-green dark:bg-dark-lighter-blueish;
+	@apply bg-very-light-green dark:bg-dark-lighter-blueish 4xl:px-9
 }
 
 .todos-div{
-	@apply grid lg:grid-cols-2 gap-x-10 lg:justify-center grid-cols-1 xl:grid-cols-3
+	@apply grid lg:grid-cols-2 gap-x-10 lg:justify-center grid-cols-1 xl:grid-cols-3 3xl:grid-cols-4
 }
 
 
 .undone-todos>div{
-	@apply  lg:absolute lg:z-3 lg:w-5 lg:bottom-5 lg:right-[30%] flex items-center w-16 justify-between lg:w-20;
+	@apply  lg:absolute lg:z-3 lg:w-5 lg:bottom-5 lg:right-[30%] flex items-center w-16 justify-between lg:w-20 3xl:right-0 3xl:flex-col 3xl:top-0 3xl:justify-center 3xl:w-10
 }
 
 .done-todos>div{
@@ -75,7 +81,7 @@ header>svg{
 .check-box{
 	width: calc(1rem + 0.5vw);
 	height: calc(1rem + 0.5vw);
-	@apply lg:absolute lg:z-3 lg:bottom-[22px] lg:left-[30%] cursor-pointer;
+	@apply lg:absolute lg:z-3 lg:bottom-[22px] lg:left-[30%] 3xl:left-1/2 3xl:-translate-x-1/2 cursor-pointer;
 }
 
 .done-todos .check-box{
@@ -84,15 +90,15 @@ header>svg{
 
 
 .todos-text{
-	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-xl xl:text-xl lg:w-full lg:px-0 lg:break-words lg:text-center lg:h-[200px]
+	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-xl xl:text-2xl lg:w-full lg:px-0 lg:break-words lg:text-center lg:h-[200px]
 }
 
 .pencil-icon{
-	@apply text-2xl cursor-pointer lg:text-3xl;
+	@apply text-2xl cursor-pointer lg:text-3xl 3xl:mb-4
 }
 
 .delete{
-	@apply text-2xl cursor-pointer lg:text-3xl;
+	@apply text-2xl cursor-pointer lg:text-3xl 3xl:mt-4;
 }
 
 .done-todos .pencil-icon{
@@ -108,7 +114,7 @@ header>svg{
 }
 
 ion-icon{
-	@apply lg:text-2xl cursor-pointer 2xl:text-4xl !important;
+	@apply lg:text-2xl cursor-pointer 2xl:text-3xl 3xl:text-4xl !important;
 }
 
 #done-editing-btn{

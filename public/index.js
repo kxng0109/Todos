@@ -29,33 +29,35 @@ let stuffs = () =>{
 	let todosText = document.querySelectorAll('.todos-text');
 	let checkBoxes = document.querySelectorAll('.check-box');
 	let deleteBtn = document.querySelectorAll('.delete');
-	let isitnew;
 	const header = document.querySelector('#header');
 
-	window.onload = () => {		
+	window.onload = () => {
 		if (!localStorage.new) {
 			localStorage.setItem('new', 1);
 			middleText.textContent = `Welcome, click the button at the buttom-right corner to start`;
 			middleText.style.display = 'block';
-			todosChecker('no');
+			todosChecker('yes');
 		}else{
-			// undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneTodosDivBackupJSON'));
-			// doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneTodosDivBackupJSON'));
+			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneTodosDivBackupJSON'));
+			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneTodosDivBackupJSON'));
 			stuffs();
 			todosChecker();
 		}
 	}
 
-	document.documentElement.onclick = () => {
+	const setHeightOfContentArea = () => {
 		let mainHeight = window.getComputedStyle(main, null).getPropertyValue("height");
 		let headerHeight = window.getComputedStyle(header, null).getPropertyValue("height");
-		const difference = screen.availHeight - parseInt(`${headerHeight}`);
+		const difference = document.documentElement.clientHeight - parseInt(`${headerHeight}`);
 		console.log(difference)
-		mainHeight <= `${screen.availHeight}px` ? main.style.height = `${difference}px`
+		mainHeight <= `${document.documentElement.clientHeight}px` ? main.style.height = `${difference}px`
 		: main.style.height = 'auto';
 	}
 
-	let todosChecker = (isitnew) =>{
+	setHeightOfContentArea();
+	document.documentElement.addEventListener('click', setHeightOfContentArea());
+
+	let todosChecker = (areyounew) =>{
 		middleText.style.display = 'none';
 		middleTextDiv.style.display = 'none';
 		switch (true) {
@@ -70,7 +72,7 @@ let stuffs = () =>{
 			case undoneTodosDiv.children.length === 0 && doneTodosDiv.children.length === 0:
 				completedTasks.style.display = 'none';
 				pendingTasks.style.display = 'none';
-				if (isitnew !== 'no') {middleText.textContent = `You're all caught up! 👍🏼`};		
+				if (areyounew !== 'yes') {middleText.textContent = `You're all caught up! 👍🏼`};
 				middleText.style.display = 'block';
 				middleTextDiv.style.display = 'flex';
 			break;
@@ -121,7 +123,7 @@ let stuffs = () =>{
 			mainContent.style.pointerEvents = 'auto';
 			addBtn.style.pointerEvents = 'auto';
 		}
-	}
+	};
 
 	todosText.forEach((element, index) =>{
 		todosText[index].style.whiteSpace = 'nowrap';
@@ -134,7 +136,7 @@ let stuffs = () =>{
 				todosText[index].style.overflowY = 'hidden';
 			}
 		}
-	})
+	});
 
 	pencilIcon.forEach((element, index) =>{
 		pencilIcon[index].onclick = () => editTodos(todosText[index]);
@@ -168,7 +170,7 @@ let stuffs = () =>{
 				}, 200);
 			}
 		}
-	})
+	});
 
 	deleteBtn.forEach((element, index) =>{
 		deleteBtn[index].onclick  = () => {
@@ -221,14 +223,14 @@ let stuffs = () =>{
 		stuffs();
 		todosChecker();
 		editTodos(todosText[index]);
-	}
+	};
 
 	setInterval(() =>{
 		let undoneTodosDivBackup = undoneTodosDiv.innerHTML;
 		let doneTodosDivBackup = doneTodosDiv.innerHTML;
 		localStorage.setItem('undoneTodosDivBackupJSON', JSON.stringify(undoneTodosDivBackup));		
 		localStorage.setItem('doneTodosDivBackupJSON', JSON.stringify(doneTodosDivBackup));
-	}, 1000)
+	}, 1000);
 }
 
 stuffs();
