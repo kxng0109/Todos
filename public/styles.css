@@ -603,10 +603,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: pointer;
 }
 
-.flex-col {
-  flex-direction: column;
-}
-
 .items-center {
   align-items: center;
 }
@@ -736,10 +732,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.outline {
-  outline-style: solid;
 }
 
 .grayscale {
@@ -1046,6 +1038,7 @@ header>svg{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow-wrap: break-word;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   font-size: 1.25rem;
@@ -1059,10 +1052,6 @@ header>svg{
 
   .todos-text {
     width: 100%;
-  }
-
-  .todos-text {
-    overflow-wrap: break-word;
   }
 
   .todos-text {

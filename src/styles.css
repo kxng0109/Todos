@@ -90,7 +90,7 @@ header>svg{
 
 
 .todos-text{
-	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-xl xl:text-2xl lg:w-full lg:px-0 lg:break-words lg:text-center lg:h-[200px]
+	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-xl xl:text-2xl lg:w-full lg:px-0 break-words lg:text-center lg:h-[200px]
 }
 
 .pencil-icon{

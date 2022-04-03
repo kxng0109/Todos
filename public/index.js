@@ -30,6 +30,7 @@ let stuffs = () =>{
 	let checkBoxes = document.querySelectorAll('.check-box');
 	let deleteBtn = document.querySelectorAll('.delete');
 	const header = document.querySelector('#header');
+	let theUsersTarget;
 
 	window.onload = () => {
 		if (!localStorage.new) {
@@ -45,7 +46,8 @@ let stuffs = () =>{
 		}
 	}
 
-	const setHeightOfContentArea = () => {
+	const setHeightOfContentAreaAndFindTarget = () => {	
+		document.documentElement.onclick = (e) => {return theUsersTarget = e.target};
 		let mainHeight = parseInt(window.getComputedStyle(main, null).getPropertyValue("height"));
 		let headerHeight = window.getComputedStyle(header, null).getPropertyValue("height");
 		const difference = document.documentElement.clientHeight - parseInt(`${headerHeight}`);
@@ -53,8 +55,8 @@ let stuffs = () =>{
 		: main.style.height = 'auto';
 	}
 
-	setHeightOfContentArea();
-	document.documentElement.addEventListener('click', setHeightOfContentArea());
+	setHeightOfContentAreaAndFindTarget();
+	document.documentElement.addEventListener('click', setHeightOfContentAreaAndFindTarget());
 
 	let todosChecker = (areyounew) =>{
 		middleText.style.display = 'none';
@@ -107,14 +109,14 @@ let stuffs = () =>{
 			addBtn.style.filter = 'brightness(100%)';
 			mainContent.style.pointerEvents = 'auto';
 			addBtn.style.pointerEvents = 'auto';
-			if (aNode.textContent == '' || aNode.textContent == ' ' || aNode.textContent == '‎') {
+			if (aNode.textContent == '' || aNode.textContent.trim() == '') {
 				aNode.parentNode.parentNode.lastChild.remove(); 
 				todosChecker();
 			}
 		}
 
 		doneEditing.onclick = () =>{
-			if (editTodosPopupArea.textContent == '' || editTodosPopupArea.textContent == ' ' || editTodosPopupArea.textContent == '‎') {return editTodosPopupArea.style.border = '1px solid red'}
+			if (editTodosPopupArea.textContent == '' || editTodosPopupArea.textContent.trim() == '') {return editTodosPopupArea.style.border = '1px solid red'}
 			aNode.textContent = editTodosPopupArea.textContent;
 			editTodosPopup.style.display = 'none';
 			main.style.filter = 'brightness(100%)';
@@ -124,18 +126,20 @@ let stuffs = () =>{
 		}
 	};
 
-	todosText.forEach((element, index) =>{
-		todosText[index].style.whiteSpace = 'nowrap';
-		todosText[index].style.overflow = 'hidden';
-		todosText[index].onclick = (e) => {
-			todosText[index].style.whiteSpace = 'normal';
-			todosText[index].style.overflowY = 'visible';
-			if (e.target !== todosText[index]) {
+	const reduceTodosInfo = () =>{
+		todosText.forEach((element, index) =>{
+			if (theUsersTarget !== todosText[index] || todosText[index].style.whiteSpace === 'normal') {
 				todosText[index].style.whiteSpace = 'nowrap';
-				todosText[index].style.overflowY = 'hidden';
+				todosText[index].style.overflow = 'hidden';
+			}else{
+				todosText[index].style.whiteSpace = 'normal';
+				todosText[index].style.overflowY = 'visible';
 			}
-		}
-	});
+		});
+	};
+
+	reduceTodosInfo();
+	window.onclick = () => reduceTodosInfo();
 
 	pencilIcon.forEach((element, index) =>{
 		pencilIcon[index].onclick = () => editTodos(todosText[index]);
@@ -202,6 +206,7 @@ let stuffs = () =>{
 			}
 		}
 
+		//I tried editing createAnElement in order to make what's below shorter, but some errors occured and so I didn't bother again
 		let outerDiv = createAnElement("div", "outerDiv", "todos");
 		createAnElement("", outerDiv, "undone-todos");
 		let theInput = createAnElement("input", "theInput", "check-box");
