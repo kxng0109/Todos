@@ -497,12 +497,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   left: 59%;
 }
 
-.top-1\/2 {
-  top: 50%;
+.right-0 {
+  right: 0px;
 }
 
-.left-1\/2 {
-  left: 50%;
+.top-\[72px\] {
+  top: 72px;
 }
 
 .right-2 {
@@ -511,6 +511,22 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bottom-2 {
   bottom: 0.5rem;
+}
+
+.top-1\/2 {
+  top: 50%;
+}
+
+.left-1\/2 {
+  left: 50%;
+}
+
+.right-1 {
+  right: 0.25rem;
+}
+
+.top-1 {
+  top: 0.25rem;
 }
 
 .bottom-10 {
@@ -557,10 +573,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 0.75rem;
 }
 
-.h-2\/5 {
-  height: 40%;
-}
-
 .h-full {
   height: 100%;
 }
@@ -579,10 +591,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-3 {
   width: 0.75rem;
-}
-
-.w-5\/6 {
-  width: 83.333333%;
 }
 
 .w-4\/5 {
@@ -663,6 +671,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: hsl(0 0% 20% / var(--tw-bg-opacity));
 }
 
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+
 .bg-light-green {
   --tw-bg-opacity: 1;
   background-color: rgb(185 255 183 / var(--tw-bg-opacity));
@@ -680,6 +693,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-9 {
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .px-4 {
@@ -712,6 +730,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .leading-10 {
@@ -753,6 +776,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition: all 0.3s ease;
 }
 
+*::-webkit-scrollbar{
+  width: 7px;
+}
+
+*::-webkit-scrollbar-thumb{
+  background-color: hsl(0, 0%, 75%);
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 992px){
+  *::-webkit-scrollbar{
+    width: 2px;
+  }
+}
+
 .todos-text::-webkit-scrollbar{
   width: 1px;
 }
@@ -763,6 +801,34 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 header>svg{
   width:  min(calc(4rem + 10vw), 9rem);
+}
+
+.popuponscreen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  display: none;
+  height: 40%;
+  width: 83.333333%;
+  --tw-translate-y: -50%;
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.dark .popuponscreen {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 95 115 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 @media screen and (min-width:  640px){
@@ -1130,6 +1196,11 @@ ion-icon {
   cursor: pointer !important;
 }
 
+.dark ion-icon {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
 @media (min-width: 1024px) {
   ion-icon {
     font-size: 1.5rem !important;
@@ -1182,6 +1253,26 @@ ion-icon {
   }
 }
 
+.instructionspopup {
+  z-index: 4;
+}
+
+@media (min-width: 1024px) {
+  .instructionspopup {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1824px) {
+  .instructionspopup {
+    height: 33.333333%;
+  }
+
+  .instructionspopup {
+    width: 33.333333%;
+  }
+}
+
 .dark .dark\:left-0 {
   left: 0px;
 }
@@ -1204,11 +1295,6 @@ ion-icon {
 .dark .dark\:bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.dark .dark\:bg-\[\#005f73\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 95 115 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:bg-dark-blueish {
@@ -1258,6 +1344,10 @@ ion-icon {
 }
 
 @media (min-width: 1280px) {
+  .xl\:top-24 {
+    top: 6rem;
+  }
+
   .xl\:h-24 {
     height: 6rem;
   }

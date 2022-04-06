@@ -35,13 +35,29 @@
 		</div>
 	</header>
 
-	<div class="bg-white text-black dark:text-white dark:bg-[#005f73] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-5/6 h-2/5 rounded z-3 p-6 text-xl hidden" id="editpopup">
+	<ion-icon name="help-outline" class="absolute right-0 bg-blue-400 top-[72px] text-black text-xl py-3 px-4 rounded z-3 xl:top-24 help-button"></ion-icon>
+
+	<div class="popuponscreen" id="editpopup">
 		<p contenteditable class="w-full h-full overflow-y-auto" id="editpopuparea"></p>
 		<ion-icon name="checkmark-circle" class="dark:text-white text-black text-5xl fixed right-2 bottom-2" id="done-editing-btn"></ion-icon>
 	</div>
 	
 	<div class="items-center justify-center hidden middle-text-div absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-3 w-4/5 lg:w-1/2">
 		<p class=" text-2xl dark:text-white text-center leading-10 hidden xl:text-2xl 2xl:text-4xl" id="middle-text"></p>
+	</div>
+
+	<div class="popuponscreen instructionspopup">
+		<ion-icon name="close-circle-outline" class="fixed text-3xl dark:text-white right-1 top-1 close-instructions"></ion-icon>
+		<div class="w-full h-full overflow-y-auto">
+			<p class="instructions-text">-Tap/Click on the plus icon to add a new entry.</p>
+			<p class="instructions-text">-Tap/Click on the check icon to save your entry.</p>
+			<p class="instructions-text">-Tap/Click on the checkbox to mark your entry as completed or not completed.</p>
+			<p class="instructions-text">-Tap/Click the pencil icon to edit the content in that particular entry.</p>
+			<p class="instructions-text">-Tap/Click on the entry to expand it's content or close it's content.</p>
+			<p class="instructions-text">-Tap/Click on the trash icon to delete your entry (You can't recover it when you delete it).</p>
+			<p class="instructions-text">-Tap/Click the slider at the top-right of the page to toggle between dark mode and light mode.</p>
+			<p class="instructions-text">-To show this instructions again, click on the question mark icon at the top of the page.</p>
+		</div>
 	</div>
 
 

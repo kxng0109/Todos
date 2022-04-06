@@ -4,6 +4,10 @@ const main = document.querySelector('#main');
 const mainContent = document.querySelector('.maincontent');
 const middleText = document.querySelector('#middle-text');
 const middleTextDiv = document.querySelector('.middle-text-div');
+const instructionsOuterDiv = document.querySelector('.instructionspopup');
+const theInstructions = document.querySelectorAll('.instructions-text');
+const closeInstructions = document.querySelector('.close-instructions');
+const helpBtn = document.querySelector('.help-button');
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 	document.documentElement.classList.add('dark');
@@ -38,16 +42,18 @@ let stuffs = () =>{
 			middleText.textContent = `Welcome, click the button at the buttom-right corner to start`;
 			middleText.style.display = 'block';
 			todosChecker('yes');
+			showOrHideInstructions('show');
 		}else{
 			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneTodosDivBackupJSON'));
 			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneTodosDivBackupJSON'));
 			stuffs();
 			todosChecker();
+			showOrHideInstructions('hide');
 		}
 	}
 
 	const setHeightOfContentAreaAndFindTarget = () => {	
-		document.documentElement.onclick = (e) => {return theUsersTarget = e.target};
+		document.documentElement.onclick = e => {return theUsersTarget = e.target};
 		let mainHeight = parseInt(window.getComputedStyle(main, null).getPropertyValue("height"));
 		let headerHeight = window.getComputedStyle(header, null).getPropertyValue("height");
 		const difference = document.documentElement.clientHeight - parseInt(`${headerHeight}`);
@@ -57,6 +63,31 @@ let stuffs = () =>{
 
 	setHeightOfContentAreaAndFindTarget();
 	document.documentElement.addEventListener('click', setHeightOfContentAreaAndFindTarget());
+
+
+
+	if (instructionsOuterDiv.style.display === 'block' && theUsersTarget !== instructionsOuterDiv && theUsersTarget !== undefined) {showOrHideInstructions('hide')}
+	const showOrHideInstructions = value =>{
+		switch (true) {
+			case value === 'hide' || instructionsOuterDiv.style.display === 'block':
+				instructionsOuterDiv.style.display = 'none';
+				main.style.filter = 'brightness(100%)';
+				addBtn.style.filter = 'brightness(100%)';
+				addBtn.style.pointerEvents = 'auto';
+				helpBtn.style.pointerEvents = 'auto';
+			break;
+			default:
+				instructionsOuterDiv.style.display = 'block';
+				main.style.filter = 'brightness(50%)';
+				addBtn.style.filter = 'brightness(50%)';
+				addBtn.style.pointerEvents = 'none';
+				helpBtn.style.pointerEvents = 'none';
+			break;
+		}
+	}
+	
+	helpBtn.onclick = () => showOrHideInstructions('show');
+	closeInstructions.onclick = () => showOrHideInstructions('hide');
 
 	let todosChecker = (areyounew) =>{
 		middleText.style.display = 'none';
@@ -139,7 +170,10 @@ let stuffs = () =>{
 	};
 
 	reduceTodosInfo();
-	window.onclick = () => reduceTodosInfo();
+	window.onclick = () => {
+		reduceTodosInfo(); 
+		// if (theUsersTarget !== instructionsOuterDiv && theUsersTarget !== undefined) {showOrHideInstructions('hide')}
+	};
 
 	pencilIcon.forEach((element, index) =>{
 		pencilIcon[index].onclick = () => editTodos(todosText[index]);
