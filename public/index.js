@@ -172,7 +172,6 @@ let stuffs = () =>{
 	reduceTodosInfo();
 	window.onclick = () => {
 		reduceTodosInfo(); 
-		// if (theUsersTarget !== instructionsOuterDiv && theUsersTarget !== undefined) {showOrHideInstructions('hide')}
 	};
 
 	pencilIcon.forEach((element, index) =>{
