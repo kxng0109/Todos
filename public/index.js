@@ -36,7 +36,7 @@ let stuffs = () =>{
 	const header = document.querySelector('#header');
 	let theUsersTarget;
 
-	window.onload = () => {
+	window.onload = e => {
 		if (!localStorage.new) {
 			localStorage.setItem('new', 1);
 			middleText.textContent = `Welcome, click the button at the buttom-right corner to start`;
@@ -50,20 +50,19 @@ let stuffs = () =>{
 			todosChecker();
 			showOrHideInstructions('hide');
 		}
+		setHeightOfContentAreaAndFindTarget(e);
 	}
 
-	const setHeightOfContentAreaAndFindTarget = () => {	
-		document.documentElement.onclick = e => {return theUsersTarget = e.target};
+	const setHeightOfContentAreaAndFindTarget = e => {
 		let mainHeight = parseInt(window.getComputedStyle(main, null).getPropertyValue("height"));
 		let headerHeight = window.getComputedStyle(header, null).getPropertyValue("height");
 		const difference = document.documentElement.clientHeight - parseInt(`${headerHeight}`);
 		mainHeight <= `${document.documentElement.clientHeight}` ? main.style.height = `${difference}px`
 		: main.style.height = 'auto';
+		return theUsersTarget = e.target;
 	}
 
-	setHeightOfContentAreaAndFindTarget();
-	document.documentElement.addEventListener('click', setHeightOfContentAreaAndFindTarget());
-
+	document.documentElement.onclick = e => {setHeightOfContentAreaAndFindTarget(e)};
 
 
 	if (instructionsOuterDiv.style.display === 'block' && theUsersTarget !== instructionsOuterDiv && theUsersTarget !== undefined) {showOrHideInstructions('hide')}
@@ -89,7 +88,7 @@ let stuffs = () =>{
 	helpBtn.onclick = () => showOrHideInstructions('show');
 	closeInstructions.onclick = () => showOrHideInstructions('hide');
 
-	let todosChecker = (areyounew) =>{
+	let todosChecker = areyounew =>{
 		middleText.style.display = 'none';
 		middleTextDiv.style.display = 'none';
 		switch (true) {
@@ -129,7 +128,7 @@ let stuffs = () =>{
 		editTodosPopup.style.display = 'block';
 		main.style.filter = 'brightness(50%)';
 		addBtn.style.filter = 'brightness(50%)';
-		editTodosPopupArea.textContent = aNode.textContent;
+		editTodosPopupArea.innerText = aNode.innerText;
 		editTodosPopupArea.style.border = 'none';
 		mainContent.style.pointerEvents = 'none';
 		addBtn.style.pointerEvents = 'none';
@@ -148,7 +147,7 @@ let stuffs = () =>{
 
 		doneEditing.onclick = () =>{
 			if (editTodosPopupArea.textContent == '' || editTodosPopupArea.textContent.trim() == '') {return editTodosPopupArea.style.border = '1px solid red'}
-			aNode.textContent = editTodosPopupArea.textContent;
+			aNode.innerText = editTodosPopupArea.innerText;
 			editTodosPopup.style.display = 'none';
 			main.style.filter = 'brightness(100%)';
 			addBtn.style.filter = 'brightness(100%)';
@@ -157,21 +156,53 @@ let stuffs = () =>{
 		}
 	};
 
-	const reduceTodosInfo = () =>{
+	const reduceTodosInfoSmallScreen = e =>{
+		theUsersTarget = e.target;
 		todosText.forEach((element, index) =>{
-			if (theUsersTarget !== todosText[index] || todosText[index].style.whiteSpace === 'normal') {
+			todosText[index].style.height = `28px`;
+			todosText[index].style.whiteSpace = 'nowrap';
+			todosText[index].style.overflow = 'hidden';
+			if (theUsersTarget === todosText[index]){
+				todosText[index].style.height = `auto`;
+				todosText[index].style.whiteSpace = 'normal';
+			}
+		})
+	};
+
+	const reduceTodosInfoLargeScreen = e =>{
+		theUsersTarget = e.target
+		todosText.forEach((element, index) =>{
+				todosText[index].style.height = `200px`;
 				todosText[index].style.whiteSpace = 'nowrap';
 				todosText[index].style.overflow = 'hidden';
-			}else{
+			if (theUsersTarget === todosText[index]){
 				todosText[index].style.whiteSpace = 'normal';
 				todosText[index].style.overflowY = 'visible';
 			}
 		});
 	};
+	window.onresize = e =>{
+		switch (true) {
+			case parseInt(window.getComputedStyle(main, null).getPropertyValue("width")) >= 1024:
+				reduceTodosInfoLargeScreen(e);
+			break;
 
-	reduceTodosInfo();
-	window.onclick = () => {
-		reduceTodosInfo(); 
+			default:
+				reduceTodosInfoSmallScreen(e);
+			break;
+		}
+	}
+
+	window.onclick = (e) => {
+		switch (true) {
+			case parseInt(window.getComputedStyle(main, null).getPropertyValue("width")) >= 1024:
+				reduceTodosInfoLargeScreen(e);
+			break;
+
+			default:
+				reduceTodosInfoSmallScreen(e);
+			break;
+		}
 	};
 
 	pencilIcon.forEach((element, index) =>{
