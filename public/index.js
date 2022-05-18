@@ -8,6 +8,8 @@ const instructionsOuterDiv = document.querySelector('.instructionspopup');
 const theInstructions = document.querySelectorAll('.instructions-text');
 const closeInstructions = document.querySelector('.close-instructions');
 const helpBtn = document.querySelector('.help-button');
+const lightModeToggle = document.querySelector('.light-mode-toggle');
+const darkModeToggle = document.querySelector('.dark-mode-toggle');
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 	document.documentElement.classList.add('dark');
@@ -39,7 +41,7 @@ let stuffs = () =>{
 	window.onload = e => {
 		if (!localStorage.new) {
 			localStorage.setItem('new', 1);
-			middleText.textContent = `Welcome, click the button at the buttom-right corner to start`;
+			middleText.textContent = `Welcome, click the button at the bottom-right corner to start`;
 			middleText.style.display = 'block';
 			todosChecker('yes');
 			showOrHideInstructions('show');
@@ -276,7 +278,7 @@ let stuffs = () =>{
 		let theInput = createAnElement("input", "theInput", "check-box");
 		theInput.setAttribute('type', 'checkbox');
 		let theP = createAnElement("p", "theP", "todos-text");
-		let innerDiv = createAnElement("div", "innerDiv", "lol");
+		let innerDiv = createAnElement("div", "innerDiv", "other-options");
 		let pencil = createAnElement("ion-icon", "pencil", "pencil-icon");
 		pencil.setAttribute('name', 'pencil-outline');
 		let trash = createAnElement("ion-icon", "trash", "delete");

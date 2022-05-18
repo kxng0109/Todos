@@ -611,6 +611,56 @@ Ensure the default browser behavior of the `hidden` attribute.
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-x-1\/2 {
+  --tw-translate-x: 50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-64 {
+  --tw-translate-x: 16rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-52 {
+  --tw-translate-x: 13rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-16 {
+  --tw-translate-x: 4rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-10 {
+  --tw-translate-x: 2.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-4 {
+  --tw-translate-x: 1rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-5 {
+  --tw-translate-x: 1.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[1005\] {
+  --tw-translate-x: 1005;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[100\%\] {
+  --tw-translate-x: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[1\.25rem\] {
+  --tw-translate-x: 1.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -906,7 +956,7 @@ header>svg{
   }
 
   .todos {
-    height: 300px;
+    height: 16rem;
   }
 
   .todos {
@@ -974,7 +1024,7 @@ header>svg{
 
 @media (min-width: 1024px) {
   .todos-div {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .todos-div {
@@ -984,7 +1034,7 @@ header>svg{
 
 @media (min-width: 1280px) {
   .todos-div {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -994,7 +1044,7 @@ header>svg{
   }
 }
 
-.undone-todos>div {
+.undone-todos .other-options {
   display: flex;
   width: 4rem;
   align-items: center;
@@ -1002,49 +1052,49 @@ header>svg{
 }
 
 @media (min-width: 1024px) {
-  .undone-todos>div {
+  .undone-todos .other-options {
     position: absolute;
   }
 
-  .undone-todos>div {
-    bottom: 1.25rem;
+  .undone-todos .other-options {
+    bottom: 0.5rem;
   }
 
-  .undone-todos>div {
-    right: 30%;
+  .undone-todos .other-options {
+    right: 25%;
   }
 
-  .undone-todos>div {
+  .undone-todos .other-options {
     z-index: 3;
   }
 
-  .undone-todos>div {
+  .undone-todos .other-options {
     width: 1.25rem;
   }
 
-  .undone-todos>div {
-    width: 5rem;
+  .undone-todos .other-options {
+    width: 4.5rem;
   }
 }
 
 @media (min-width: 1824px) {
-  .undone-todos>div {
+  .undone-todos .other-options {
     right: 0px;
   }
 
-  .undone-todos>div {
+  .undone-todos .other-options {
     top: 0px;
   }
 
-  .undone-todos>div {
+  .undone-todos .other-options {
     width: 2.5rem;
   }
 
-  .undone-todos>div {
+  .undone-todos .other-options {
     flex-direction: column;
   }
 
-  .undone-todos>div {
+  .undone-todos .other-options {
     justify-content: center;
   }
 }
@@ -1057,8 +1107,8 @@ header>svg{
 }
 
 .check-box{
-  width: calc(1rem + 0.5vw);
-  height: calc(1rem + 0.5vw);
+  width: calc(1rem + 0.2vw);
+  height: calc(1rem + 0.2vw);
   cursor: pointer;
 }
 
@@ -1068,11 +1118,11 @@ header>svg{
   }
 
   .check-box {
-    bottom: 22px;
+    bottom: 0.5rem;
   }
 
   .check-box {
-    left: 30%;
+    left: 25%;
   }
 
   .check-box {
@@ -1141,8 +1191,8 @@ header>svg{
 
 @media (min-width: 1280px) {
   .todos-text {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1207,15 +1257,15 @@ ion-icon {
 
 @media (min-width: 1024px) {
   ion-icon {
-    font-size: 1.5rem !important;
-    line-height: 2rem !important;
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
   }
 }
 
 @media (min-width: 1536px) {
   ion-icon {
-    font-size: 1.875rem !important;
-    line-height: 2.25rem !important;
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
   }
 }
 
@@ -1227,8 +1277,8 @@ ion-icon {
 }
 
 #done-editing-btn {
-  font-size: 3rem !important;
-  line-height: 1 !important;
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
 }
 
 .todos-list-headers {
@@ -1263,17 +1313,13 @@ ion-icon {
 
 @media (min-width: 1024px) {
   .instructionspopup {
-    width: 50%;
+    width: 33.333333%;
   }
 }
 
 @media (min-width: 1824px) {
   .instructionspopup {
     height: 33.333333%;
-  }
-
-  .instructionspopup {
-    width: 33.333333%;
   }
 }
 
@@ -1348,12 +1394,8 @@ ion-icon {
 }
 
 @media (min-width: 1280px) {
-  .xl\:top-24 {
-    top: 6rem;
-  }
-
-  .xl\:h-24 {
-    height: 6rem;
+  .xl\:h-16 {
+    height: 4rem;
   }
 
   .xl\:h-\[1\.125rem\] {

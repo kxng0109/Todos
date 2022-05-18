@@ -72,7 +72,7 @@ header>svg{
 }
 
 .todos{
-	@apply w-full flex justify-evenly items-center rounded-md px-5 py-4 mb-10 lg:px-6 lg:justify-center lg:overflow-y-auto lg:h-[300px] lg:relative xl:py-7 xl:mb-20;
+	@apply w-full flex justify-evenly items-center rounded-md px-5 py-4 mb-10 lg:px-6 lg:justify-center lg:overflow-y-auto lg:h-64 lg:relative xl:py-7 xl:mb-20;
 }
 
 .done-todos{
@@ -84,12 +84,12 @@ header>svg{
 }
 
 .todos-div{
-	@apply grid lg:grid-cols-2 gap-x-10 lg:justify-center grid-cols-1 xl:grid-cols-3 3xl:grid-cols-4
+	@apply grid lg:grid-cols-3 gap-x-10 lg:justify-center grid-cols-1 xl:grid-cols-4 3xl:grid-cols-4
 }
 
 
-.undone-todos>div{
-	@apply  lg:absolute lg:z-3 lg:w-5 lg:bottom-5 lg:right-[30%] flex items-center w-16 justify-between lg:w-20 3xl:right-0 3xl:flex-col 3xl:top-0 3xl:justify-center 3xl:w-10
+.undone-todos .other-options{
+	@apply  lg:absolute lg:z-3 lg:w-5 lg:bottom-2 lg:right-[25%] flex items-center w-16 justify-between lg:w-[4.5rem] 3xl:right-0 3xl:flex-col 3xl:top-0 3xl:justify-center 3xl:w-10
 }
 
 .done-todos>div{
@@ -98,9 +98,9 @@ header>svg{
 
 
 .check-box{
-	width: calc(1rem + 0.5vw);
-	height: calc(1rem + 0.5vw);
-	@apply lg:absolute lg:z-3 lg:bottom-[22px] lg:left-[30%] 3xl:left-1/2 3xl:-translate-x-1/2 cursor-pointer;
+	width: calc(1rem + 0.2vw);
+	height: calc(1rem + 0.2vw);
+	@apply lg:absolute lg:z-3 lg:bottom-2 lg:left-[25%] 3xl:left-1/2 3xl:-translate-x-1/2 cursor-pointer;
 }
 
 .done-todos .check-box{
@@ -109,7 +109,7 @@ header>svg{
 
 
 .todos-text{
-	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-xl xl:text-2xl lg:w-full lg:px-0 break-words lg:text-center lg:h-[200px]
+	@apply px-5 truncate w-4/5 text-xl cursor-pointer lg:text-xl xl:text-xl lg:w-full lg:px-0 break-words lg:text-center lg:h-[200px]
 }
 
 .pencil-icon{
@@ -133,11 +133,11 @@ header>svg{
 }
 
 ion-icon{
-	@apply lg:text-2xl cursor-pointer dark:text-white 2xl:text-3xl 3xl:text-4xl !important;
+	@apply lg:text-xl cursor-pointer dark:text-white 2xl:text-2xl 3xl:text-4xl !important;
 }
 
 #done-editing-btn{
-	@apply text-5xl !important;
+	@apply text-4xl !important;
 }
 
 .todos-list-headers{
@@ -145,5 +145,5 @@ ion-icon{
 }
 
 .instructionspopup{
-	@apply z-4 lg:w-1/2 3xl:w-1/3 3xl:h-1/3
+	@apply z-4 lg:w-1/3 3xl:h-1/3
 }
