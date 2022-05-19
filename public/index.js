@@ -8,8 +8,8 @@ const instructionsOuterDiv = document.querySelector('.instructionspopup');
 const theInstructions = document.querySelectorAll('.instructions-text');
 const closeInstructions = document.querySelector('.close-instructions');
 const helpBtn = document.querySelector('.help-button');
-const lightModeToggle = document.querySelector('.light-mode-toggle');
-const darkModeToggle = document.querySelector('.dark-mode-toggle');
+const lightModeToggle = document.querySelector('.light-mode-icon');
+const darkModeToggle = document.querySelector('.dark-mode-icon');
 
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 	document.documentElement.classList.add('dark');
@@ -17,7 +17,7 @@ if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.match
 	document.documentElement.classList.remove('dark');
 }
 
-let stuffs = () =>{
+let mainFunction = () =>{
 	const addBtn = document.querySelector('#add');
 	const SLIDER = document.querySelector('#slider');
 	const SLIDER_CIRCLE = document.querySelector('#slider-circle');
@@ -48,7 +48,7 @@ let stuffs = () =>{
 		}else{
 			undoneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('undoneTodosDivBackupJSON'));
 			doneTodosDiv.innerHTML = JSON.parse(localStorage.getItem('doneTodosDivBackupJSON'));
-			stuffs();
+			mainFunction();
 			todosChecker();
 			showOrHideInstructions('hide');
 		}
@@ -116,6 +116,17 @@ let stuffs = () =>{
 		}
 	}
 
+	const toggle = (mainProperty, otherProperty) =>{
+		localStorage.setItem('theme', mainProperty);
+		if (mainProperty === 'dark') {
+			return document.documentElement.classList.add('dark');
+		}
+		 return document.documentElement.classList.remove(otherProperty);
+	}
+
+	lightModeToggle.onclick = () => toggle('light', 'dark');
+	darkModeToggle.onclick = () => toggle('dark', 'light');
+
 	SLIDER.onclick = () =>{
 		if (document.documentElement.classList.contains('dark')) {
 		 	localStorage.setItem('theme', 'light');
@@ -174,7 +185,7 @@ let stuffs = () =>{
 	const reduceTodosInfoLargeScreen = e =>{
 		theUsersTarget = e.target
 		todosText.forEach((element, index) =>{
-				todosText[index].style.height = `200px`;
+				todosText[index].style.height = `195px`;
 				todosText[index].style.whiteSpace = 'nowrap';
 				todosText[index].style.overflow = 'hidden';
 			if (theUsersTarget === todosText[index]){
@@ -290,7 +301,7 @@ let stuffs = () =>{
 		createAnElement("", innerDiv, "", outerDiv);
 		undoneTodosDiv.appendChild(outerDiv);
 		let todosText = document.querySelectorAll('.todos-text');//had to re-assign it in order to update the variable, i don't know why i used let
-		stuffs();
+		mainFunction();
 		todosChecker();
 		editTodos(todosText[index]);
 	};
@@ -303,4 +314,4 @@ let stuffs = () =>{
 	}, 1000);
 }
 
-stuffs();
+mainFunction();

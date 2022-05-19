@@ -30,7 +30,7 @@
 }
 
 header>svg{
-	 width:  min(calc(4rem + 10vw), 9rem);
+	 width:  min(calc(4rem + 10vw), 7rem);
 }
 
 .popuponscreen{
@@ -89,7 +89,7 @@ header>svg{
 
 
 .undone-todos .other-options{
-	@apply  lg:absolute lg:z-3 lg:w-5 lg:bottom-2 lg:right-[25%] flex items-center w-16 justify-between lg:w-[4.5rem] 3xl:right-0 3xl:flex-col 3xl:top-0 3xl:justify-center 3xl:w-10
+	@apply flex items-center w-16 justify-between lg:absolute lg:z-3 lg:bottom-2 lg:right-[20%] lg:-translate-x-[20%] lg:w-[4.7rem] 3xl:right-0 3xl:flex-col 3xl:top-0 3xl:justify-center 3xl:w-10
 }
 
 .done-todos>div{
@@ -100,7 +100,7 @@ header>svg{
 .check-box{
 	width: calc(1rem + 0.2vw);
 	height: calc(1rem + 0.2vw);
-	@apply lg:absolute lg:z-3 lg:bottom-2 lg:left-[25%] 3xl:left-1/2 3xl:-translate-x-1/2 cursor-pointer;
+	@apply cursor-pointer lg:absolute lg:z-3 lg:bottom-2 lg:left-[25%] lg:-translate-x-[20%] 3xl:left-1/2 3xl:-translate-x-1/2;
 }
 
 .done-todos .check-box{
